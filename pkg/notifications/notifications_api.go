@@ -681,8 +681,8 @@ func (a *Notifications) GetChannelsWithContext(
 }
 
 const getChannelsQuery = `query(
-	$accountID: Int!, $filters: AiNotificationsChannelFilter,
-) { actor { account(id: $accountID) { aiNotifications { channels(filters: $filters) {
+	$accountID: Int!, $filters: AiNotificationsChannelFilter, $cursor: String
+) { actor { account(id: $accountID) { aiNotifications { channels(filters: $filters, cursor: $cursor) {
 	entities {
 		accountId
 		active
@@ -756,8 +756,8 @@ func (a *Notifications) GetDestinationsWithContext(
 }
 
 const getDestinationsQuery = `query(
-	$accountID: Int!, $filters: AiNotificationsDestinationFilter,
-) { actor { account(id: $accountID) { aiNotifications { destinations(filters: $filters) {
+	$accountID: Int!, $filters: AiNotificationsDestinationFilter, $cursor: String
+) { actor { account(id: $accountID) { aiNotifications { destinations(filters: $filters, cursor: $cursor) {
 	entities {
 		accountId
 		active
